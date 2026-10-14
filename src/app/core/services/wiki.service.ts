@@ -3,14 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Plant, Disease, Fertilizer } from '../models/interfaces';
+import { environment } from './apiUrl';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WikiService {
   private http = inject(HttpClient);
-  // private baseUrl = 'http://localhost:3000/api';
-  private baseUrl = 'https://gheras-backend.vercel.app/api';
+  private baseUrl = environment.baseUrl;
 
   // Plants
   getPlants(page: number = 1, limit: number = 15): Observable<any> {
@@ -65,7 +65,7 @@ export class WikiService {
   getImageUrl(path: string): string {
     if (!path) return '';
     if (path.startsWith('http')) return path;
-    return `http://localhost:3000/${path}`;
+    return `${environment.imageBaseUrl}/${path.replace(/^\/+/, '')}`;
   }
 
 

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { Product, Category, Cart, Order } from '../models/interfaces';
 import { AuthService } from './auth.service';
+import { environment } from './apiUrl';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,7 @@ import { AuthService } from './auth.service';
 export class StoreService {
   private http = inject(HttpClient);
   private authService = inject(AuthService);
-  // private baseUrl = 'http://localhost:3000/api';
-  private baseUrl = 'https://gheras-backend.vercel.app/api';
+  private baseUrl = environment.baseUrl;
 
   // Global Cart State
   isCartOpen = signal(false);

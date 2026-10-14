@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from './apiUrl';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogService {
-  // private apiUrl = 'http://localhost:3000/api/blogs'; 
-  private apiUrl = 'https://gheras-backend.vercel.app/api'; 
+  private apiUrl = `${environment.baseUrl}/blogs`;
 
   constructor(private http: HttpClient) {}
 

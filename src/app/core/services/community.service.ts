@@ -2,14 +2,14 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Post, Comment, Blog } from '../models/interfaces';
+import { environment } from './apiUrl';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommunityService {
   private http = inject(HttpClient);
-  // private baseUrl = 'http://localhost:3000/api';
-  private baseUrl = 'https://gheras-backend.vercel.app/api';
+  private baseUrl = environment.baseUrl;
 
   private getAuthHeaders() {
     const token = localStorage.getItem('token');
